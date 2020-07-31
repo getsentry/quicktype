@@ -40,17 +40,6 @@ const assignedEnumCaseNameOrder = 10;
 
 const unionMemberNameOrder = 40;
 
-function splitDescription(descriptions: Iterable<string> | undefined): string[] | undefined {
-    if (descriptions === undefined) return undefined;
-    const description = Array.from(descriptions)
-        .join("\n\n")
-        .trim();
-    if (description === "") return undefined;
-    return wordWrap(description)
-        .split("\n")
-        .map(l => l.trim());
-}
-
 export type ForbiddenWordsInfo = { names: (Name | string)[]; includeGlobalForbidden: boolean };
 
 const assignedNameAttributeKind = new TypeAttributeKind<Name>("assignedName");
@@ -180,15 +169,26 @@ export abstract class ConvenienceRenderer extends Renderer {
         return defined(this._nameStoreView);
     }
 
+    protected splitDescription(descriptions: Iterable<string> | undefined): string[] | undefined {
+        if (descriptions === undefined) return undefined;
+        const description = Array.from(descriptions)
+          .join("\n\n")
+          .trim();
+        if (description === "") return undefined;
+        return wordWrap(description)
+          .split("\n")
+          .map(l => l.trim());
+    }
+
     protected descriptionForType(t: Type): string[] | undefined {
         let description = this.typeGraph.attributeStore.tryGet(descriptionTypeAttributeKind, t);
-        return splitDescription(description);
+        return this.splitDescription(description);
     }
 
     protected descriptionForClassProperty(o: ObjectType, name: string): string[] | undefined {
         const descriptions = this.typeGraph.attributeStore.tryGet(propertyDescriptionsTypeAttributeKind, o);
         if (descriptions === undefined) return undefined;
-        return splitDescription(descriptions.get(name));
+        return this.splitDescription(descriptions.get(name));
     }
 
     protected setUpNaming(): ReadonlySet<Namespace> {
