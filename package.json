@@ -7,7 +7,7 @@
     "repository": "https://github.com/quicktype/quicktype",
     "scripts": {
         "pub": "script/publish.sh",
-        "prepare": "npm run build",
+        "prepare": "script/build.ts",
         "build": "script/build.ts",
         "test": "jest && script/test",
         "start": "script/watch",
