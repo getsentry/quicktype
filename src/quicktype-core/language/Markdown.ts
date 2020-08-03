@@ -16,6 +16,10 @@ export class MarkdownTargetLanguage extends TypeScriptFlowBaseTargetLanguage {
     renderContext: RenderContext,
     untypedOptionValues: { [name: string]: any }
   ): TypeScriptRenderer {
+    if (untypedOptionValues["just-types"] == undefined) {
+      untypedOptionValues["just-types"] = true;
+    }
+
     return new MarkdownRenderer(
       this,
       renderContext,
