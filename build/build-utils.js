@@ -54,7 +54,7 @@ function npmShow(packageName, path) {
 }
 
 function latestPackageVersion(packageName) {
-    const versions = npmShow(packageName, "versions");
+    const versions = npmShow(`@untitaker/${packageName}-with-markdown`, "versions");
     return versions[versions.length - 1];
 }
 
