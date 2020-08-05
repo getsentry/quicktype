@@ -1,6 +1,6 @@
 {
     "name": "@untitaker/quicktype-core-with-markdown",
-    "version": "6.0.69",
+    "version": "6.0.70",
     "description": "The quicktype engine as a library",
     "license": "Apache-2.0",
     "main": "dist/index.js",
@@ -36,6 +36,6 @@
         "dist/**"
     ],
     "config": {
-        "commit": "1dbcf4764a940241435c58d847635751acaf53d3"
+        "commit": "3fc3a2d1370f082d7fcaf18288597547d2dc8293"
     }
 }

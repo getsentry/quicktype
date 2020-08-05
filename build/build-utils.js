@@ -63,7 +63,7 @@ function quicktypeCoreDependency(packageName) {
 }
 
 function packageCommit(packageName, version) {
-    const commit = runNPM(["show", `${packageName}@${version}`, "config.commit"], true).trim();
+    const commit = runNPM(["show", `@untitaker/${packageName}-with-markdown@${version}`, "config.commit"], true).trim();
     if (commit === "") {
         console.error("Error: No commit for latest package version");
         process.exit(1);
