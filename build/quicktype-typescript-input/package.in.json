@@ -1,5 +1,5 @@
 {
-    "name": "quicktype-typescript-input",
+    "name": "@untitaker/quicktype-typescript-input-with-markdown",
     "version": "0.0.6",
     "license": "Apache-2.0",
     "main": "dist/index.js",
